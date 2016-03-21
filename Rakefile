@@ -137,7 +137,7 @@ namespace :install do
   task :vplug do
     step 'vplug'
     `cd ~/.vim/bundle/vimproc.vim;make`
-    `stack install hdevtools ghc-mod hlint`
+    `stack install hdevtools ghc-mod hlint stylish-haskell`
   end
 end
 
@@ -155,15 +155,16 @@ COPIED_FILES = filemap(
 )
 
 LINKED_FILES = filemap(
-  'vim'              => '~/.vim',
-  'tmux.conf'        => '~/.tmux.conf',
-  'vimrc'            => '~/.vimrc',
-  'vimrc.bundles'    => '~/.vimrc.bundles',
-  'zshrc'            => '~/.zshrc',
-  'ghci'             => '~/.ghci',
-  'gitconfig'        => '~/.gitconfig',
-  'aliases'          => '~/.aliases',
-  'stack/config.yml' => '~/.stack/config.yaml'
+  'vim'                  => '~/.vim',
+  'tmux.conf'            => '~/.tmux.conf',
+  'vimrc'                => '~/.vimrc',
+  'vimrc.bundles'        => '~/.vimrc.bundles',
+  'zshrc'                => '~/.zshrc',
+  'ghci'                 => '~/.ghci',
+  'gitconfig'            => '~/.gitconfig',
+  'aliases'              => '~/.aliases',
+  'stack/config.yml'     => '~/.stack/config.yaml'
+  'stylish-haskell.yaml' => '~/.stylish-haskell.yaml'
 )
 
 desc 'Install these config files.'

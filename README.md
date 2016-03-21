@@ -1,11 +1,7 @@
-# Dotfiles (adapted from many places including bitemyapp's dotfiles and Maximum Awesome)
+# Dotfiles
 
 Config files for vim, tmux, haskell platform, zsh and more
 
-## What's in it?
-
-* [tmux](http://tmux.github.io/)
-* [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
 
 ### vim
 
@@ -22,13 +18,21 @@ Config files for vim, tmux, haskell platform, zsh and more
 * `<C-]>` jump to definition using ctags
 * `,l` begins aligning lines on a string, usually used as `,l=` to align assignments
 * `<C-hjkl>` move between windows, shorthand for `<C-w> hjkl`
-* `,hH` prompts for a hoogle search
-* `,hh` searches hoogle for word under the cursor
-* `,hi` get detailed information from Hoogle, under the cursor
-* `,hz` close the hoogle window
 * `,a=` align on equal signs
 * `,a,` align on commas
 * `,a|` align on |
+
+haskell specific
+----
+* `,hw` insert the inferred type for the function under the cursor
+* `,hs` split case functions for the variable under the cursor
+* `,ht` show the type for the function under the cursor
+* `,hc` clear the type information show from `ht`
+* `,hh` searches hoogle for word under the cursor
+* `,hi` get detailed information from Hoogle, under the cursor
+* `,hz` close the hoogle window
+
+stylish haskell is configured globally at ~/.stylish-haskell.yaml
 
 ### tmux
 
@@ -40,8 +44,6 @@ Config files for vim, tmux, haskell platform, zsh and more
 If you have three or more panes:
 * `prefix +` opens up the main-horizontal-layout
 * `prefix =` opens up the main-vertical-layout
-
-You can adjust the size of the smaller panes in `tmux.conf` by lowering or increasing the `other-pane-height` and `other-pane-width` options.
 
 ### Zsh
 
@@ -72,5 +74,6 @@ creates `.vimrc.local`, `.vimrc.bundles.local` and `.tmux.conf.local` files wher
 
     rake uninstall
 
-Note that this won't remove everything, but your vim configuration should be reset to whatever it was before installing. Some uninstallation steps will be manual.
+## Credit
 
+adapted from many places including [bitemyapp's dotfiles](https://github.com/bitemyapp/dotfiles) and [Maximum Awesome](https://github.com/square/maximum-awesome)

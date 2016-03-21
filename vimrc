@@ -126,11 +126,12 @@ let g:closetag_filenames = "*.html.*,*.xhtml,*.phtml,*.erb"
 " vim rspec
 let g:RspecSplitHorizontal=0
 let g:rspec_command = "Dispatch bundle exec rspec {spec}"
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>n :call RunNearestSpec()<CR>
-map <Leader>r :call RunCurrentSpecFile()<CR>
-map <Leader>R :call RunAllSpecs()<CR>
+map <Leader>rl :call RunLastSpec()<CR>
+map <Leader>rn :call RunNearestSpec()<CR>
+map <Leader>rr :call RunCurrentSpecFile()<CR>
+map <Leader>rR :call RunAllSpecs()<CR>
 map <Leader>em :ElmMakeCurrentFile<CR>
+"
 " in case you forgot to sudo
 cnoremap w!! %!sudo tee > /dev/null %
 
