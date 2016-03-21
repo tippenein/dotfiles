@@ -1,0 +1,9 @@
+templates:
+  params:
+    author-email: brady.ouren@gmail.com
+    author-name: Brady Ouren
+    copyright: 2015 Brady Ouren
+    github-username: tippenein
+    category: Development
+system-ghc: false
+compiler-check: newer-minor
