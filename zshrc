@@ -2,8 +2,8 @@
 ZSH=$HOME/.oh-my-zsh
 
 source $ZSH/oh-my-zsh.sh
-
-. $HOME/bin/z.sh
+source $HOME/.aliases
+source $HOME/bin/z.sh
 
 convert2mp3() {
   ffmpeg -i $1 -codec:a libmp3lame -qscale:a 0 "$1.mp3"
@@ -75,7 +75,6 @@ DISABLE_CORRECTION="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git virtualenv tmux)
 
-source $HOME/.aliases
 # alias hdevtools="stack exec --no-ghc-package-path hdevtools --"
 # Increase limit on number of files to watch because OS X's default is way too low
 ulimit -n 2048
@@ -105,7 +104,7 @@ export ARCHFLAGS="-Wno-error=unused-command-line-argument-hard-error-in-future"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-source $HOME/.zshrc.private
+source $HOME/.private
 source $HOME/.zshenv
 
 export DB_BRANCH=master

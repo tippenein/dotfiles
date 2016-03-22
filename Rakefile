@@ -77,25 +77,7 @@ def unlink_file(original_filename, symlink_filename)
   end
 end
 
-namespace :bootstrap do
-  desc 'bootstrap'
-  task :boostrap do
-    step 'bootstrap'
-    `ssh-keygen -t rsa -b 4096 -C "brady.ouren@gmail.com"`
-    `eval "$(ssh-agent -s)"`
-    `ssh-add ~/.ssh/id_rsa`
-    puts "now go add it to github so we can pull some packages"
-    puts "..."
-  end
-end
-
 namespace :install do
-
-  desc 'system stuff'
-  task :system do
-    step 'system'
-    `./system.sh`
-  end
 
   desc 'Install The Silver Searcher'
   task :the_silver_searcher do
@@ -130,7 +112,7 @@ namespace :install do
   task :vundle do
     step 'vundle'
     install_github_bundle 'VundleVim','Vundle.vim'
-    sh 'vim -c "PluginInstall!" -c "q" -c "q"'
+    sh 'vim +PluginInstall +qall'
   end
 
   desc 'Install Vim plugins'
@@ -138,6 +120,19 @@ namespace :install do
     step 'vplug'
     `cd ~/.vim/bundle/vimproc.vim;make`
     `stack install hdevtools ghc-mod hlint stylish-haskell`
+  end
+
+  desc 'move stuff'
+  task :move do
+    step 'symlink'
+
+    LINKED_FILES.each do |orig, link|
+      link_file orig, link
+    end
+
+    COPIED_FILES.each do |orig, copy|
+      cp orig, copy, :verbose => true unless File.exist?(copy)
+    end
   end
 end
 
@@ -163,7 +158,7 @@ LINKED_FILES = filemap(
   'ghci'                 => '~/.ghci',
   'gitconfig'            => '~/.gitconfig',
   'aliases'              => '~/.aliases',
-  'stack/config.yml'     => '~/.stack/config.yaml'
+  'stack-config.yml'     => '~/.stack/config.yaml',
   'stylish-haskell.yaml' => '~/.stylish-haskell.yaml'
 )
 
@@ -174,16 +169,7 @@ task :install do
   Rake::Task['install:ctags'].invoke
   Rake::Task['install:tmux'].invoke
   Rake::Task['install:zsh'].invoke
-
-  step 'symlink'
-
-  LINKED_FILES.each do |orig, link|
-    link_file orig, link
-  end
-
-  COPIED_FILES.each do |orig, copy|
-    cp orig, copy, :verbose => true unless File.exist?(copy)
-  end
+  Rake::Task['install:move'].invoke
 
   # Install Vundle and bundles
   Rake::Task['install:vundle'].invoke

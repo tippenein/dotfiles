@@ -30,4 +30,4 @@ sudo ln -sf /opt/cabal/1.22/bin/cabal /usr/bin/cabal
 cabal update
 cabal install xmonad xmonad-contrib xmonad-extras
 
-touch .secrets
+touch ~/.secrets
