@@ -10,7 +10,7 @@ sudo apt-get update
 sudo apt-get purge unity-webapps-common
 sudo apt-get purge unity-lens-shopping
 
-sudo apt-get install -y xmonad xmobar git suckless-tools zsh xorg-dev emacs-snapshot emacs-snapshot-el xtrlock xbacklight stalonetray fdpowermon pasystray python-pygments mosh xorg-dev tmux screen htop silversearcher-ag mumble darcs libtinfo-dev openjdk-7-jdk inotify-tools colordiff
+sudo apt-get install -y xmonad xmobar git suckless-tools zsh xorg-dev emacs-snapshot emacs-snapshot-el xtrlock xbacklight stalonetray fdpowermon pasystray python-pygments mosh xorg-dev tmux screen htop silversearcher-ag mumble darcs libtinfo-dev openjdk-7-jdk inotify-tools colordiff vim rake
 
 wget -q -O- https://s3.amazonaws.com/download.fpcomplete.com/ubuntu/fpco.key | sudo apt-key add -
 echo 'deb http://download.fpcomplete.com/ubuntu/trusty stable main'|sudo tee /etc/apt/sources.list.d/fpco.list
@@ -31,3 +31,7 @@ cabal update
 cabal install xmonad xmonad-contrib xmonad-extras
 
 touch ~/.secrets
+mkdir ~/workspace
+stack setup
+zsh
+. ~/.zshrc

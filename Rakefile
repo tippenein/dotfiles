@@ -158,13 +158,12 @@ LINKED_FILES = filemap(
   'ghci'                 => '~/.ghci',
   'gitconfig'            => '~/.gitconfig',
   'aliases'              => '~/.aliases',
-  'stack-config.yml'     => '~/.stack/config.yaml',
+  'stack-config.yaml'     => '~/.stack/config.yaml',
   'stylish-haskell.yaml' => '~/.stylish-haskell.yaml'
 )
 
 desc 'Install these config files.'
 task :install do
-  Rake::Task['install:system'].invoke
   Rake::Task['install:the_silver_searcher'].invoke
   Rake::Task['install:ctags'].invoke
   Rake::Task['install:tmux'].invoke
