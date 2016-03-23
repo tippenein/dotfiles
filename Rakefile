@@ -158,7 +158,7 @@ LINKED_FILES = filemap(
   'ghci'                 => '~/.ghci',
   'gitconfig'            => '~/.gitconfig',
   'aliases'              => '~/.aliases',
-  'stack-config.yaml'     => '~/.stack/config.yaml',
+  'stack-config.yaml'    => '~/.stack/config.yaml',
   'stylish-haskell.yaml' => '~/.stylish-haskell.yaml'
 )
 
@@ -169,8 +169,6 @@ task :install do
   Rake::Task['install:tmux'].invoke
   Rake::Task['install:zsh'].invoke
   Rake::Task['install:move'].invoke
-
-  # Install Vundle and bundles
   Rake::Task['install:vundle'].invoke
   Rake::Task['install:vplug'].invoke
 

@@ -17,7 +17,7 @@ new-servant() {
 }
 
 whatis() {
-  grep $1 ~/.zshrc
+  grep $1 ~/.aliases
 }
 
 dockerbash() {
