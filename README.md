@@ -52,7 +52,8 @@ Installs [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) and loads a
 
 ## bootstrap
 
-    rake bootstrap
+    ./bootstrap.sh
+    ./system.sh
 
 ## Install
 
