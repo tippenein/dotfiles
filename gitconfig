@@ -51,6 +51,6 @@
     sshow = "!f() { git stash show stash@{/$*} -p; }; f"
 
 [rerere]
-	enabled = true
+    enabled = true
 [init]
-	templatedir = ~/.git_template
+    templatedir = ~/.git_template
