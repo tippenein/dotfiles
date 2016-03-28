@@ -12,7 +12,11 @@ sudo apt-get purge unity-lens-shopping
 
 sudo apt-get update
 
-sudo apt-get install -y xmonad xmobar git suckless-tools zsh xorg-dev emacs-snapshot emacs-snapshot-el xtrlock xbacklight stalonetray fdpowermon pasystray python-pygments mosh xorg-dev tmux screen htop silversearcher-ag mumble darcs libtinfo-dev openjdk-7-jdk inotify-tools colordiff vim rake neovim
+sudo apt-get install -y git zsh emacs-snapshot emacs-snapshot-el mosh tmux screen htop silversearcher-ag mumble darcs libtinfo-dev inotify-tools vim rake neovim
+
+if [$DESK -eq 1]
+  then sudo apt-get install -y xmonad xmobar suckless-tools xorg-dev xtrlock xbacklight stalonetray fdpowermon pasystray python-pygments xorg-dev
+fi
 
 wget -q -O- https://s3.amazonaws.com/download.fpcomplete.com/ubuntu/fpco.key | sudo apt-key add -
 echo 'deb http://download.fpcomplete.com/ubuntu/trusty stable main'|sudo tee /etc/apt/sources.list.d/fpco.list
@@ -30,7 +34,9 @@ sudo ln -sf /opt/ghc/7.10.3/bin/runhaskell /usr/bin/runhaskell
 sudo ln -sf /opt/cabal/1.22/bin/cabal /usr/bin/cabal
 
 cabal update
-cabal install xmonad xmonad-contrib xmonad-extras
+if [$DESK -eq 1]
+  then cabal install xmonad xmonad-contrib xmonad-extras
+fi
 
 touch ~/.secrets
 mkdir ~/workspace
