@@ -90,8 +90,6 @@ namespace :install do
     step 'zsh & oh-my-zsh'
     `mkdir ~/bin`
     `touch ~/.zshrc.private`
-    `touch ~/.zshenv`
-    sys_install 'zsh'
     `sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"`
     `wget https://raw.githubusercontent.com/rupa/z/master/z.sh -O ~/bin/z.sh`
   end
@@ -120,8 +118,14 @@ namespace :install do
     step 'vplug'
     `cd ~/.vim/bundle/vimproc.vim;make`
     `stack install hdevtools ghc-mod hlint stylish-haskell`
-    `ln -s .vimrc .nvimrc`
-    `ln -s .vim .nvim`
+    `ln -s ~/.vimrc .nvimrc`
+    `ln -s ~/.vim .nvim`
+  end
+
+  desc 'Install Spacemacs'
+  task :spacemacs do
+    step 'spacemacs'
+    `git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d`
   end
 
   desc 'move stuff'
@@ -161,7 +165,8 @@ LINKED_FILES = filemap(
   'gitconfig'            => '~/.gitconfig',
   'aliases'              => '~/.aliases',
   'stack-config.yaml'    => '~/.stack/config.yaml',
-  'stylish-haskell.yaml' => '~/.stylish-haskell.yaml'
+  'stylish-haskell.yaml' => '~/.stylish-haskell.yaml',
+  'spacemacs'            => '~/.spacemacs'
 )
 
 desc 'Install these config files.'
@@ -173,6 +178,7 @@ task :install do
   Rake::Task['install:move'].invoke
   Rake::Task['install:vundle'].invoke
   Rake::Task['install:vplug'].invoke
+  Rake::Task['install:spacemacs'].invoke
 
 end
 
