@@ -34,5 +34,7 @@ cabal update
 touch ~/.secrets
 mkdir -p ~/workspace
 stack setup
+stack install hoogle hdevtools ghc-mod hlint stylish-haskell
+hoogle data
 zsh
 . ~/.zshrc
