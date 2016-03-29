@@ -15,7 +15,7 @@ sudo apt-get update
 sudo apt-get install -y git zsh emacs-snapshot mosh tmux screen htop silversearcher-ag mumble darcs libtinfo-dev inotify-tools vim rake neovim
 
 if [$DESK -eq 1]
-  then sudo apt-get install -y xmonad xmobar suckless-tools xorg-dev xtrlock xbacklight stalonetray fdpowermon pasystray python-pygments xorg-dev
+  then sudo apt-get install -y xmonad xmobar suckless-tools xorg-dev xtrlock xbacklight stalonetray fdpowermon pasystray python-pygments
 fi
 
 wget -q -O- https://s3.amazonaws.com/download.fpcomplete.com/ubuntu/fpco.key | sudo apt-key add -

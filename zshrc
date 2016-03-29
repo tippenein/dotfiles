@@ -1,11 +1,6 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
-source $ZSH/oh-my-zsh.sh
-source $HOME/bin/z.sh
-source $HOME/.aliases
-source $HOME/.private
-source $HOME/.zshenv
 
 
 convert2mp3() {
@@ -45,6 +40,12 @@ ZSH_THEME="af-magic"
 
 DISABLE_CORRECTION="true"
 plugins=(git virtualenv tmux)
+
+source $ZSH/oh-my-zsh.sh
+source $HOME/bin/z.sh
+source $HOME/.aliases
+source $HOME/.private
+source $HOME/.zshenv
 
 # Increase limit on number of files to watch because OS X's default is way too low
 ulimit -n 2048
