@@ -1,6 +1,7 @@
 alias g='git'
 alias j='z'
 alias psg='ps aux | grep'
+alias e='emacs-snapshot -nw'
 alias lvh='rails s -p 3000 -b lvh.me'
 alias sex='stack exec'
 alias sb='stack build'

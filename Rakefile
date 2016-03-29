@@ -118,8 +118,8 @@ namespace :install do
     step 'vplug'
     `cd ~/.vim/bundle/vimproc.vim;make`
     `stack install hdevtools ghc-mod hlint stylish-haskell`
-    `ln -s ~/.vimrc .nvimrc`
-    `ln -s ~/.vim .nvim`
+    `ln -s ~/.vimrc ~/.nvimrc`
+    `ln -s ~/.vim ~/.nvim`
   end
 
   desc 'Install Spacemacs'

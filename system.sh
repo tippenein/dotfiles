@@ -12,7 +12,7 @@ sudo apt-get purge unity-lens-shopping
 
 sudo apt-get update
 
-sudo apt-get install -y git zsh emacs mosh tmux screen htop silversearcher-ag mumble darcs libtinfo-dev inotify-tools vim rake neovim
+sudo apt-get install -y git zsh emacs-snapshot mosh tmux screen htop silversearcher-ag mumble darcs libtinfo-dev inotify-tools vim rake neovim
 
 if [$DESK -eq 1]
   then sudo apt-get install -y xmonad xmobar suckless-tools xorg-dev xtrlock xbacklight stalonetray fdpowermon pasystray python-pygments xorg-dev
@@ -39,7 +39,7 @@ if [$DESK -eq 1]
 fi
 
 touch ~/.secrets
-mkdir ~/workspace
+mkdir -p ~/workspace
 stack setup
 zsh
 . ~/.zshrc
