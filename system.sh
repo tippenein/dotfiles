@@ -14,10 +14,6 @@ sudo apt-get update
 
 sudo apt-get install -y git zsh emacs-snapshot mosh tmux screen htop silversearcher-ag mumble darcs libtinfo-dev inotify-tools vim rake neovim
 
-if [$DESK -eq 1]
-  then sudo apt-get install -y xmonad xmobar suckless-tools xorg-dev xtrlock xbacklight stalonetray fdpowermon pasystray python-pygments
-fi
-
 wget -q -O- https://s3.amazonaws.com/download.fpcomplete.com/ubuntu/fpco.key | sudo apt-key add -
 echo 'deb http://download.fpcomplete.com/ubuntu/trusty stable main'|sudo tee /etc/apt/sources.list.d/fpco.list
 sudo apt-get update && sudo apt-get install stack -y
@@ -34,9 +30,6 @@ sudo ln -sf /opt/ghc/7.10.3/bin/runhaskell /usr/bin/runhaskell
 sudo ln -sf /opt/cabal/1.22/bin/cabal /usr/bin/cabal
 
 cabal update
-if [$DESK -eq 1]
-  then cabal install xmonad xmonad-contrib xmonad-extras
-fi
 
 touch ~/.secrets
 mkdir -p ~/workspace
