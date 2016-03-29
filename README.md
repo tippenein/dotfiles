@@ -59,21 +59,8 @@ Installs [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) and loads a
 
     rake
 
-## Update
-
-    rake
-
-This will update all installed plugins using Vundle's `:PluginInstall!`
-command. Any errors encountered during this process may be resolved by clearing
-out the problematic directories in ~/.vim/bundle. `:help PluginInstall`
-provides more detailed information about Vundle.
-
 ## Customize
 creates `.vimrc.local`, `.vimrc.bundles.local` and `.tmux.conf.local` files where you can customize settings
-
-## Uninstall
-
-    rake uninstall
 
 ## Credit
 
