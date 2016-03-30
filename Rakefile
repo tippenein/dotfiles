@@ -130,6 +130,16 @@ namespace :install do
     install_github_system('syl20bnr','spacemacs' '~/.emacs.d')
   end
 
+  desc 'Install postgres'
+  task :postgres do
+    step 'postgres'
+    `sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'`
+    `wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -`
+    sh 'sudo apt-get update'
+    sys_install 'postgresql-9.4', 'postgresql-contrib'
+    sh 'createuser --superuser `whoami`'
+  end
+
   desc 'Install ruby specific'
   task :ruby do
     step 'ruby'
@@ -190,7 +200,7 @@ task :install do
   Rake::Task['install:vplug'].invoke
   Rake::Task['install:spacemacs'].invoke
   Rake::Task['install:ruby'].invoke
-
+  Rake::Task['install:postgres'].invoke
 end
 
 desc 'Uninstall these config files.'

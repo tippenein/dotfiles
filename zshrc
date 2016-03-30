@@ -56,7 +56,8 @@ export PATH="$HOME/.local/bin:$PATH"
 export MYSQL_HOME=/usr/local/mysql
 export DYLD_LIBRARY_PATH=/usr/local/mysql/lib/:$DYLD_LIBRARY_PATH
 export EDITOR='vim'
-export TERM='xterm-256color'
+# export TERM='screen-256color'
+export TERM='screen-256color-bce'
 
 ### Configuration files for Postgres (-D option)
 export PGDATA="/usr/local/var/postgres"

@@ -15,7 +15,7 @@ sudo apt-get update
 sudo apt-get install -y git zsh emacs-snapshot mosh tmux screen htop silversearcher-ag mumble darcs libtinfo-dev inotify-tools vim rake neovim build-essential
 
 wget -q -O- https://s3.amazonaws.com/download.fpcomplete.com/ubuntu/fpco.key | sudo apt-key add -
-echo 'deb http://download.fpcomplete.com/ubuntu/trusty stable main'|sudo tee /etc/apt/sources.list.d/fpco.list
+sudo sh -c 'echo "deb http://download.fpcomplete.com/ubuntu/$(lsb_release -cs) stable main"|sudo tee /etc/apt/sources.list.d/fpco.list'
 sudo apt-get update && sudo apt-get install stack -y
 
 sudo apt-get update
