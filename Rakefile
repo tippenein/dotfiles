@@ -1,12 +1,16 @@
 
-def sys_install(package)
-  sh "sudo apt-get install #{package}"
+def sys_install(*packages)
+  sh "sudo apt-get install #{packages.join(' ')}"
+end
+
+def install_github_system(user, package, location)
+  unless File.exist? File.expand_path(location)
+    sh "git clone https://github.com/#{user}/#{package} #{location}"
+  end
 end
 
 def install_github_bundle(user, package)
-  unless File.exist? File.expand_path("~/.vim/bundle/#{package}")
-    sh "git clone https://github.com/#{user}/#{package} ~/.vim/bundle/#{package}"
-  end
+  install_github_bundle(user, package, "~/.vim/bundle/#{package}")
 end
 
 def step(description)
@@ -89,7 +93,6 @@ namespace :install do
   task :zsh do
     step 'zsh & oh-my-zsh'
     `mkdir ~/bin`
-    `touch ~/.zshrc.private`
     `sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"`
     `wget https://raw.githubusercontent.com/rupa/z/master/z.sh -O ~/bin/z.sh`
   end
@@ -124,7 +127,15 @@ namespace :install do
   desc 'Install Spacemacs'
   task :spacemacs do
     step 'spacemacs'
-    `git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d`
+    install_github_system('syl20bnr','spacemacs' '~/.emacs.d')
+  end
+
+  desc 'Install ruby specific'
+  task :ruby do
+    step 'ruby'
+    sys_install 'libssl-dev', 'libreadline-dev'
+    install_github_system 'rbenv', 'rbenv', '~/.rbenv'
+    install_github_system 'rbenv', 'ruby-build' '~/.rbenv/plugins/ruby-build'
   end
 
   desc 'move stuff'
@@ -178,6 +189,7 @@ task :install do
   Rake::Task['install:vundle'].invoke
   Rake::Task['install:vplug'].invoke
   Rake::Task['install:spacemacs'].invoke
+  Rake::Task['install:ruby'].invoke
 
 end
 

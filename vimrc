@@ -1,7 +1,6 @@
 " don't bother with vi compatibility
 set nocompatible
 
-" enable syntax highlighting
 syntax enable
 
 " configure Vundle
@@ -46,6 +45,13 @@ set tabstop=8                   " actual tabs occupy 8 characters
 set wildmenu                    " show a navigable menu for tab completion
 set wildmode=longest,list,full
 set wildignore=log/**,node_modules/**,target/**,tmp/**,*.rbc
+
+" theme
+
+set t_Co=16
+let g:solarized_termcolors=16
+set background=dark
+colorscheme solarized
 
 " Enable basic mouse behavior such as resizing buffers.
 set mouse=a
@@ -106,7 +112,7 @@ map <Leader>a<bar> :Align <bar><CR>
 nnoremap <silent> <leader>hh :Hoogle <CR>
 
 " Hoogle and prompt for input
-nnoremap <leader>hH :Hoogle 
+nnoremap <leader>hH :Hoogle
 
 " Hoogle for detailed documentation (e.g. "Functor")
 nnoremap <silent> <leader>hi :HoogleInfo<CR>

@@ -1,5 +1,6 @@
 alias g='git'
 alias j='z'
+alias logout='sudo pkill -u tippenein'
 alias psg='ps aux | grep'
 alias apti='sudo apt-get install'
 alias aptrm='sudo apt-get purge'
