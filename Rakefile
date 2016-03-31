@@ -1,6 +1,6 @@
 
-def sys_install(*packages)
-  sh "sudo apt-get install #{packages.join(' ')}"
+def sys_install(packages)
+  sh "sudo apt-get install #{packages}"
 end
 
 def install_github_system(user, package, location)
@@ -107,6 +107,7 @@ namespace :install do
   task :tmux do
     step 'tmux'
     sys_install 'tmux'
+    `curl -Lo- https://raw.github.com/tippenein/tmuxrc/master/bootstrap.sh | bash`
   end
 
   desc 'Install Vundle'
@@ -136,16 +137,16 @@ namespace :install do
     `sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'`
     `wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -`
     sh 'sudo apt-get update'
-    sys_install 'postgresql-9.4', 'postgresql-contrib'
+    sys_install 'postgresql-9.4 postgresql-contrib libpq-dev'
     sh 'createuser --superuser `whoami`'
   end
 
   desc 'Install ruby specific'
   task :ruby do
     step 'ruby'
-    sys_install 'libssl-dev', 'libreadline-dev'
+    sys_install 'libssl-dev libreadline-dev'
     install_github_system 'rbenv', 'rbenv', '~/.rbenv'
-    install_github_system 'rbenv', 'ruby-build' '~/.rbenv/plugins/ruby-build'
+    install_github_system 'rbenv', 'ruby-build', '~/.rbenv/plugins/ruby-build'
   end
 
   desc 'move stuff'

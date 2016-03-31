@@ -77,3 +77,4 @@ export NVM_DIR="$HOME/.nvm"
 
 export DB_BRANCH=master
 export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
