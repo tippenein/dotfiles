@@ -1,6 +1,6 @@
 
 def sys_install(packages)
-  sh "sudo apt-get install #{packages}"
+  sh "sudo apt-get -y install #{packages}"
 end
 
 def install_github_system(user, package, location)
@@ -121,8 +121,6 @@ namespace :install do
   task :vplug do
     step 'vplug'
     `cd ~/.vim/bundle/vimproc.vim;make`
-    `ln -s ~/.vimrc ~/.nvimrc`
-    `ln -s ~/.vim ~/.nvim`
   end
 
   desc 'Install Spacemacs'
@@ -149,7 +147,16 @@ namespace :install do
     install_github_system 'rbenv', 'ruby-build', '~/.rbenv/plugins/ruby-build'
   end
 
-  desc 'move stuff'
+  desc 'Install docker and docker-compose'
+  task :docker do
+    step 'docker'
+    `wget -qO- https://get.docker.com/ | sh`
+    sh 'sudo usermod -aG docker $(whoami)'
+    sys_install 'python-pip'
+    `sudo pip install docker-compose`
+  end
+
+  desc 'move and symlink files/dirs'
   task :move do
     step 'symlink'
 
@@ -173,7 +180,6 @@ end
 COPIED_FILES = filemap(
   'vimrc.local'         => '~/.vimrc.local',
   'vimrc.bundles.local' => '~/.vimrc.bundles.local',
-  'tmux.conf.local'     => '~/.tmux.conf.local'
 )
 
 LINKED_FILES = filemap(
@@ -187,7 +193,9 @@ LINKED_FILES = filemap(
   'aliases'              => '~/.aliases',
   'stack-config.yaml'    => '~/.stack/config.yaml',
   'stylish-haskell.yaml' => '~/.stylish-haskell.yaml',
-  'spacemacs'            => '~/.spacemacs'
+  'spacemacs'            => '~/.spacemacs',
+  '~/.vimrc'             => '~/.nvimrc',
+  '~/.vim'               => '~/.nvim'
 )
 
 desc 'Install these config files.'
