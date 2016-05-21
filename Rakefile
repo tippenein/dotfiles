@@ -147,6 +147,12 @@ namespace :install do
     install_github_system 'rbenv', 'ruby-build', '~/.rbenv/plugins/ruby-build'
   end
 
+  desc 'Install npm / node specific'
+  task :node do
+    sh 'curl -sL https://deb.nodesource.com/setup_0.12 | sudo -E bash -'
+    sys_install 'nodejs'
+  end
+
   desc 'Install docker and docker-compose'
   task :docker do
     step 'docker'
